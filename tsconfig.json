@@ -7,24 +7,16 @@
       "esnext"
     ],
     "allowJs": true,
-    "checkJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
+    "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@app/*": [
-        "./*"
-      ]
-    }
+    "jsx": "preserve"
   },
   "include": [
     "next-env.d.ts",
