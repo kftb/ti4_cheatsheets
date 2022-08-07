@@ -1,0 +1,20 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#fff",
+    "titleBar.inactiveForeground": "#fff",
+    "titleBar.activeBackground": "#493989",
+    "titleBar.inactiveBackground": "#493989"
+  },
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.fontFamily": "'JetBrains Mono', Fira Code, Menlo, Monaco, 'Courier New', monospace"
+}
