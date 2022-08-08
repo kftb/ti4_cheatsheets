@@ -10,7 +10,7 @@ export const factions = [
     factionName: 'Barony of Letnev	',
     id: 'barony',
     logo: '',
-    subtitle: 'Militaristic bureaucrats',
+    subtitle: 'Militaristic Bureaucrats',
     pok: false,
   },
   {
@@ -105,7 +105,7 @@ export const factions = [
     pok: false,
   },
   {
-    factionName: 'Yin Brohood',
+    factionName: 'Yin Brotherhood',
     id: 'yin',
     logo: '',
     subtitle: 'Children of Moyin',
