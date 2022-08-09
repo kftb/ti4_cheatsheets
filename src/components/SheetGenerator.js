@@ -3,7 +3,7 @@ import { Page, View, Document, StyleSheet, PDFViewer, Image } from '@react-pdf/r
 import { uniqueId } from 'lodash';
 import { useSetupStore } from '../context/SetupContext';
 
-function Cheatsheet() {
+function SheetGenerator() {
   // load selected factions loaded in from previous page
   // TODO: Consider parsing them into the url instead
   const selectedFactions = useSetupStore((state) => state.factions);
@@ -58,4 +58,4 @@ function Cheatsheet() {
   );
 }
 
-export default Cheatsheet;
+export default SheetGenerator;
