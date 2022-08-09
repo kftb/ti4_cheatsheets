@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
-function FactionCard({ faction, factionCounter }) {
+function FactionCard({ faction }) {
   const { register } = useFormContext();
 
   const { factionName, subtitle, id } = faction;
@@ -35,6 +35,7 @@ function FactionCard({ faction, factionCounter }) {
           <img
             className="object-cover ml-4 rounded-full h-20"
             src={`/factions/portraits/${id}.png`}
+            alt={`${factionName}`}
           />
         </label>
       </li>

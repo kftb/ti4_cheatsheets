@@ -1,8 +1,7 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, PDFViewer, Image } from '@react-pdf/renderer';
+import { Page, View, Document, StyleSheet, PDFViewer, Image } from '@react-pdf/renderer';
 import { uniqueId } from 'lodash';
 import { useSetupStore } from '../context/SetupContext';
-import { getEveryNth } from '../libs/getEveryNth';
 
 function Cheatsheet() {
   // load selected factions loaded in from previous page

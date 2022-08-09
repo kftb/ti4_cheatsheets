@@ -1,13 +1,11 @@
 import React from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { factions } from '../assets/factions';
-import { uniqueId } from 'lodash';
 import { useSetupStore } from '../context/SetupContext';
 import { useRouter } from 'next/router';
 import FactionCard from './FactionCard';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { ErrorMessage } from '@hookform/error-message';
 
 const formValidationSchema = yup.object().shape({
   // factions: yup.bool().oneOf([true], 'ttest'),
@@ -17,16 +15,12 @@ function Homepage() {
   const router = useRouter();
 
   const addFaction = useSetupStore((state) => state.addFaction);
-  const contextFactions = useSetupStore((state) => state.factions);
 
   const methods = useForm({
     defaultValues: { factions: '' },
     resolver: yupResolver(formValidationSchema),
   });
-  const {
-    formState: { errors },
-    control,
-  } = methods;
+  const { control } = methods;
 
   // use to watch input fields
   const factionWatch = useWatch({
@@ -51,7 +45,7 @@ function Homepage() {
     } else {
       // Filter values down to 'true' = selected
       const filteredByValue = Object.fromEntries(
-        Object.entries(data.factions).filter(([key, value]) => value === true),
+        Object.entries(data.factions).filter(([, value]) => value === true),
       );
 
       // Push all true values into new array
@@ -83,10 +77,6 @@ function Homepage() {
     } else {
       null;
     }
-  };
-
-  const testtest = () => {
-    return <div>test</div>;
   };
 
   return (
