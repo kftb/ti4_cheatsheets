@@ -4,6 +4,18 @@ import { uniqueId } from 'lodash';
 import { useSetupStore } from '../context/SetupContext';
 import { getEveryNth } from '../libs/getEveryNth';
 
+function getLayout(numCards, oldStyles) {
+  const styles = {};
+  if (numCards <= 6) {
+    styles.image = { marginVertical: 3, marginHorizontal: 2, maxWidth: '98%' };
+    styles.page = { ...oldStyles.page, marginLeft: 2, marginRight: 2, marginTop: 10 };
+  } else if (numCards > 6) {
+    styles.image = { marginVertical: 1, marginHorizontal: 2, maxWidth: '88%' };
+    styles.page = { ...oldStyles.page, marginLeft: 10, marginRight: 10 };
+  }
+  return { ...oldStyles, ...styles };
+}
+
 function SheetGenerator() {
   // load selected factions loaded in from previous page
   // TODO: Consider parsing them into the url instead
@@ -12,14 +24,13 @@ function SheetGenerator() {
   const factions = selectedFactions.sort();
 
   // Create styles
-  const styles = StyleSheet.create({
+  let styles = StyleSheet.create({
     page: {
       flexDirection: 'row',
       backgroundColor: '#fff',
     },
     section: {
       flex: 1,
-
       alignContent: 'center',
     },
   });
@@ -48,19 +59,13 @@ function SheetGenerator() {
       </>
     );
   } else if (config.page_size === 'letter') {
-    styles.image = { marginVertical: 3, marginHorizontal: 2, maxWidth: '98%' };
-    styles.page = { ...styles.page, marginTop: 10 };
+    styles = getLayout(factions.length, styles);
 
-    const factionsLeft = getEveryNth(factions, 3, 0);
-    const factionsMiddle = getEveryNth(factions, 3, 1);
-    const factionsRight = getEveryNth(factions, 3, 2);
+    const factionsLeft = getEveryNth(factions, 2, 0);
+    const factionsRight = getEveryNth(factions, 2, 1);
 
     const factionViewLeftImages = factionsLeft.map((fl) => (
       <Image key={uniqueId()} style={styles.image} src={`/factions/cards/${fl}.png`} />
-    ));
-
-    const factionViewMiddleImages = factionsMiddle.map((fm) => (
-      <Image key={uniqueId()} style={styles.image} src={`/factions/cards/${fm}.png`} />
     ));
 
     const factionViewRightImages = factionsRight.map((fr) => (
@@ -70,7 +75,6 @@ function SheetGenerator() {
     pageContent = (
       <>
         <View style={styles.section}>{factionViewLeftImages}</View>
-        <View style={styles.section}>{factionViewMiddleImages}</View>
         <View style={styles.section}>{factionViewRightImages}</View>
       </>
     );
@@ -80,7 +84,7 @@ function SheetGenerator() {
     <Document>
       <Page
         size={config.page_size}
-        orientation={config.page_size === 'a4' ? 'portrait' : 'landscape'}
+        orientation={config.page_size === 'a4' ? 'portrait' : 'portrait'}
         style={styles.page}
       >
         {pageContent}
