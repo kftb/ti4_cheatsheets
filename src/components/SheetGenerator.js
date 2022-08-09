@@ -3,6 +3,7 @@ import { Page, View, Document, StyleSheet, PDFViewer, Image } from '@react-pdf/r
 import { uniqueId } from 'lodash';
 import { useSetupStore } from '../context/SetupContext';
 import { getEveryNth } from '../libs/getEveryNth';
+import { useRouter } from 'next/router';
 
 function getLayout(numCards, oldStyles) {
   const styles = {};
@@ -22,6 +23,11 @@ function SheetGenerator() {
   const selectedFactions = useSetupStore((state) => state.factions);
   const config = useSetupStore((state) => state.config);
   const factions = selectedFactions.sort();
+  const router = useRouter();
+
+  if (factions.length === 0) {
+    router.push('/');
+  }
 
   // Create styles
   let styles = StyleSheet.create({
