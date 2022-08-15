@@ -4,8 +4,13 @@ import create from 'zustand';
 export const useSetupStore = create((set) => ({
   factions: [],
 
-  config: { page_size: 'a4' },
-
   addFaction: (faction) => set((state) => ({ factions: faction })),
-  addConfig: (config) => set((state) => ({ config: config })),
+}));
+
+//TODO: Figure out why store goes into infinite loop if addConfig is merged with above store
+
+export const useConfigStore = create((set) => ({
+  config: { letter: false },
+
+  addConfig: (newConfig) => set((state) => ({ config: newConfig })),
 }));
