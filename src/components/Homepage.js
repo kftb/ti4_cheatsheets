@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { factions } from '../assets/factions';
-import { useSetupStore } from '../context/SetupContext';
+import { useConfigStore, useSetupStore } from '../context/SetupContext';
 import { useRouter } from 'next/router';
 import FactionCard from './FactionCard';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import HomepageSettings from './HomepageSettings';
 
 const formValidationSchema = yup.object().shape({
   // factions: yup.bool().oneOf([true], 'ttest'),
@@ -13,9 +14,9 @@ const formValidationSchema = yup.object().shape({
 
 function Homepage() {
   const router = useRouter();
-
   const addFaction = useSetupStore((state) => state.addFaction);
-
+  const addConfig = useConfigStore((state) => state.addConfig);
+  const config = useConfigStore((state) => state.config);
   const methods = useForm({
     defaultValues: { factions: '' },
     resolver: yupResolver(formValidationSchema),
@@ -33,6 +34,12 @@ function Homepage() {
     (a, item) => a + (item === true ? 1 : 0),
     0,
   );
+
+  // if (router.locale === 'US' || 'CA') {
+  //   addConfig({ letter: true });
+  // } else {
+  //   addConfig({ letter: false });
+  // }
 
   const onSubmit = (data) => {
     // Manual validation of more than 0, less than 8
@@ -56,6 +63,7 @@ function Homepage() {
 
       // Add selected fashions into context
       addFaction(selFactions);
+      addConfig(data.settings);
 
       // Redirect to export page
       router.push('/export');
@@ -90,6 +98,8 @@ function Homepage() {
         <div>
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <HomepageSettings />
+
               <span className="my-2 text-blue-600">
                 &nbsp;&nbsp;
                 {counterWarning()}

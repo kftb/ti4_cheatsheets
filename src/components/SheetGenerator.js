@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page, View, Document, StyleSheet, PDFViewer, Image } from '@react-pdf/renderer';
 import { uniqueId } from 'lodash';
-import { useSetupStore } from '../context/SetupContext';
+import { useConfigStore, useSetupStore } from '../context/SetupContext';
 import { getEveryNth } from '../libs/getEveryNth';
 import { useRouter } from 'next/router';
 
@@ -21,7 +21,7 @@ function SheetGenerator() {
   // load selected factions loaded in from previous page
   // TODO: Consider parsing them into the url instead
   const selectedFactions = useSetupStore((state) => state.factions);
-  const config = useSetupStore((state) => state.config);
+  const config = useConfigStore((state) => state.config);
   const factions = selectedFactions.sort();
   const router = useRouter();
 
@@ -43,7 +43,7 @@ function SheetGenerator() {
 
   let pageContent = '';
 
-  if (config.page_size === 'a4') {
+  if (config.letter === false) {
     styles.image = { marginVertical: 2, marginHorizontal: 5, maxWidth: '95%' };
     styles.page = { ...styles.page, marginTop: 5 };
 
@@ -64,7 +64,7 @@ function SheetGenerator() {
         <View style={styles.section}>{factionViewRightImages}</View>
       </>
     );
-  } else if (config.page_size === 'letter') {
+  } else if (config.letter === true) {
     styles = getLayout(factions.length, styles);
 
     const factionsLeft = getEveryNth(factions, 2, 0);
@@ -89,8 +89,8 @@ function SheetGenerator() {
   const pdf = (
     <Document>
       <Page
-        size={config.page_size}
-        orientation={config.page_size === 'a4' ? 'portrait' : 'portrait'}
+        size={config.letter === false ? 'a4' : 'letter'}
+        orientation={config.letter === false ? 'portrait' : 'portrait'}
         style={styles.page}
       >
         {pageContent}
