@@ -167,4 +167,11 @@ export const factions = [
     subtitle: 'Interdimensional Devourers',
     pok: true,
   },
+  {
+    factionName: 'Keleres Council',
+    id: 'keleres',
+    logo: '',
+    subtitle: 'Galactic Peacekeepers',
+    pok: true,
+  },
 ];
