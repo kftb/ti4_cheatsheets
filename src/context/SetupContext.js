@@ -10,7 +10,7 @@ export const useSetupStore = create((set) => ({
 //TODO: Figure out why store goes into infinite loop if addConfig is merged with above store
 
 export const useConfigStore = create((set) => ({
-  config: { letter: false },
+  config: { letter: true, sc: false },
 
-  addConfig: (newConfig) => set((state) => ({ config: newConfig })),
+  addConfig: (newConfig) => set({ config: { ...newConfig } }),
 }));

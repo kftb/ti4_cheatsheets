@@ -39,9 +39,31 @@ function HomepageSettings() {
               <span className="ml-3 text-sm font-medium text-gray-300">Letter</span>
             </div>
           </div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div>
+            <div className="flex">
+              <label
+                htmlFor="sc-toggle"
+                className="inline-flex relative items-center mb-4 cursor-pointer"
+              >
+                <input
+                  {...register(`settings.sc`)}
+                  type="checkbox"
+                  value=""
+                  id="sc-toggle"
+                  className="sr-only peer"
+                />
+                <div
+                  className="w-11 h-6 bg-gray-700 rounded-full 
+          peer peer-focus:ring-blue-800 peer-checked:after:translate-x-full
+           peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px]
+           after:border-gray-300 
+           after:border after:rounded-full after:h-5 after:w-5 
+           after:transition-all border-gray-600 peer-checked:bg-gray-600"
+                ></div>
+              </label>
+              <span className="ml-3 text-sm font-medium text-gray-300">Add Strategy card page</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

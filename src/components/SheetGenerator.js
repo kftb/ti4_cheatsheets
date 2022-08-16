@@ -4,6 +4,7 @@ import { uniqueId } from 'lodash';
 import { useConfigStore, useSetupStore } from '../context/SetupContext';
 import { getEveryNth } from '../libs/getEveryNth';
 import { useRouter } from 'next/router';
+import FactionCardSheetGenerator from './FactionCardSheetGenerator';
 
 function getLayout(numCards, oldStyles) {
   const styles = {};
@@ -86,16 +87,30 @@ function SheetGenerator() {
     );
   }
 
+  const factionSheet = (
+    <Page
+      size={config.letter === false ? 'a4' : 'letter'}
+      orientation={config.letter === false ? 'portrait' : 'portrait'}
+      style={styles.page}
+    >
+      {pageContent}
+    </Page>
+  );
+
+  const strategyCardsSheet = <FactionCardSheetGenerator letter={config.letter} />;
+  const docContent = () => {
+    if (config.sc === false) {
+      return factionSheet;
+    }
+  };
+
   const pdf = (
-    <Document>
-      <Page
-        size={config.letter === false ? 'a4' : 'letter'}
-        orientation={config.letter === false ? 'portrait' : 'portrait'}
-        style={styles.page}
-      >
-        {pageContent}
-      </Page>
-    </Document>
+    <>
+      <Document>
+        {config.sc === true ? strategyCardsSheet : null}
+        {factionSheet}
+      </Document>
+    </>
   );
 
   return (
