@@ -99,28 +99,37 @@ function SheetGenerator() {
 
   const strategyCardsSheet = <FactionCardSheetGenerator letter={config.letter} />;
   const docContent = () => {
-    if (config.sc === false) {
-      return factionSheet;
+    const content = [];
+
+    // if pagePerPlayer is true generate a set of sheets per selected faction
+    if (config.pagePerPlayer) {
+      // loop over length of faction array
+      for (let i = 0; i < factions.length; i++) {
+        // if strategy card option was selected add that first
+        if (config.sc) {
+          content.push(strategyCardsSheet);
+        }
+        content.push(factionSheet);
+      }
+    } else {
+      if (config.sc) {
+        content.push(strategyCardsSheet);
+      }
+      content.push(factionSheet);
     }
+    return content;
   };
 
   const pdf = (
     <>
-      <Document>
-        {config.sc === true ? strategyCardsSheet : null}
-        {factionSheet}
-      </Document>
+      <Document>{docContent()}</Document>
     </>
   );
 
   return (
-    <>
-      <div className="w-full">
-        <PDFViewer width="100%" height="1500px">
-          {pdf}
-        </PDFViewer>
-      </div>
-    </>
+    <PDFViewer width="100%" height="1000px">
+      {pdf}
+    </PDFViewer>
   );
 }
 
