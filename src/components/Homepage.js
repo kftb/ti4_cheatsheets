@@ -7,6 +7,8 @@ import FactionCard from './FactionCard';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import HomepageSettings from './HomepageSettings';
+import { Footer } from 'flowbite-react';
+import HomepageFooter from './Footer';
 
 const formValidationSchema = yup.object().shape({
   // factions: yup.bool().oneOf([true], 'ttest'),
@@ -94,22 +96,22 @@ function Homepage() {
           <h1 className="mt-10 text-4xl font-title uppercase ">TI4 Cheat sheet generator</h1>
         </div>
         <h2 className="my-5">Pick the factions in your game</h2>
-
-        <div>
+        <div className="mx-5 md:mx-10">
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               <HomepageSettings />
-
               <span className="my-2 text-blue-600">
                 &nbsp;&nbsp;
                 {counterWarning()}
               </span>
 
-              <ul className="grid gap-3 w-full md:grid-cols-4">{newFactionCards}</ul>
+              <ul className="grid gap-3 w-full md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                {newFactionCards}
+              </ul>
               <button
                 className="mt-6 py-2 px-4  bg-orange-800
                hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 
-               text-white w-1/4 
+               text-white lg:w-1/4 w-1/2 
                transition ease-in duration-200 
                text-center text-base font-semibold shadow-md 
                focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
