@@ -19,6 +19,9 @@ function getLayout(numCards, oldStyles) {
 }
 
 function SheetGenerator() {
+  //TODO: Find better solution than hardcoding inner height on first render
+  let height = window.innerHeight;
+
   // load selected factions loaded in from previous page
   // TODO: Consider parsing them into the url instead
   const selectedFactions = useSetupStore((state) => state.factions);
@@ -122,12 +125,12 @@ function SheetGenerator() {
 
   const pdf = (
     <>
-      <Document>{docContent()}</Document>
+      <Document title="TI4 Cheatsheet">{docContent()}</Document>
     </>
   );
 
   return (
-    <PDFViewer width="100%" height="1000px">
+    <PDFViewer height={`${height}px`} width="100%">
       {pdf}
     </PDFViewer>
   );
