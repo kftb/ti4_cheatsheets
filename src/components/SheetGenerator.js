@@ -64,8 +64,12 @@ function SheetGenerator() {
 
     pageContent = (
       <>
-        <View style={styles.section}>{factionViewLeftImages}</View>
-        <View style={styles.section}>{factionViewRightImages}</View>
+        <View key={uniqueId()} style={styles.section}>
+          {factionViewLeftImages}
+        </View>
+        <View key={uniqueId()} style={styles.section}>
+          {factionViewRightImages}
+        </View>
       </>
     );
   } else if (config.letter === true) {
@@ -84,8 +88,12 @@ function SheetGenerator() {
 
     pageContent = (
       <>
-        <View style={styles.section}>{factionViewLeftImages}</View>
-        <View style={styles.section}>{factionViewRightImages}</View>
+        <View key={uniqueId()} style={styles.section}>
+          {factionViewLeftImages}
+        </View>
+        <View key={uniqueId()} style={styles.section}>
+          {factionViewRightImages}
+        </View>
       </>
     );
   }
@@ -95,6 +103,7 @@ function SheetGenerator() {
       size={config.letter === false ? 'a4' : 'letter'}
       orientation={config.letter === false ? 'portrait' : 'portrait'}
       style={styles.page}
+      key={uniqueId()}
     >
       {pageContent}
     </Page>
