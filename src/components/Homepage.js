@@ -47,6 +47,11 @@ function Homepage() {
     // Manual validation of more than 0, less than 8
     // TODO: Implement this through Yup validation
     if (factionCounter === 0 || factionCounter > 8) {
+      gtag('event', 'wrong_selection', {
+        event_category: 'error',
+        event_label: 'action',
+      });
+
       methods.setError('factions', {
         type: 'custom',
         message: 'Choose at least 1 and at most 8 factions',
@@ -66,6 +71,12 @@ function Homepage() {
       // Add selected fashions into context
       addFaction(selFactions);
       addConfig(data.settings);
+
+      // Send event to Google Analytics
+      gtag('event', 'generate_cheatsheet', {
+        event_category: 'action',
+        event_label: 'action',
+      });
 
       // Redirect to export page
       router.push('/export');
