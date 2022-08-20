@@ -111,7 +111,8 @@ function Homepage() {
               <button
                 className="mt-6 py-2 px-4  bg-orange-800
                hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 
-               text-white lg:w-1/4 w-1/2 
+               text-white 
+               w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5 
                transition ease-in duration-200 
                text-center text-base font-semibold shadow-md 
                focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
@@ -120,6 +121,9 @@ function Homepage() {
               </button>
             </form>
           </FormProvider>
+        </div>
+        <div>
+          <HomepageFooter />
         </div>
       </div>
     </div>
