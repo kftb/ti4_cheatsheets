@@ -4,6 +4,7 @@ import { uniqueId } from 'lodash';
 import { useConfigStore, useSetupStore } from '../context/SetupContext';
 import { getEveryNth } from '../libs/getEveryNth';
 import { useRouter } from 'next/router';
+import FactionCardSheetGenerator from './FactionCardSheetGenerator';
 
 function getLayout(numCards, oldStyles) {
   const styles = {};
@@ -18,6 +19,9 @@ function getLayout(numCards, oldStyles) {
 }
 
 function SheetGenerator() {
+  //TODO: Find better solution than hardcoding inner height on first render
+  let height = window.innerHeight;
+
   // load selected factions loaded in from previous page
   // TODO: Consider parsing them into the url instead
   const selectedFactions = useSetupStore((state) => state.factions);
@@ -86,26 +90,49 @@ function SheetGenerator() {
     );
   }
 
+  const factionSheet = (
+    <Page
+      size={config.letter === false ? 'a4' : 'letter'}
+      orientation={config.letter === false ? 'portrait' : 'portrait'}
+      style={styles.page}
+    >
+      {pageContent}
+    </Page>
+  );
+
+  const strategyCardsSheet = <FactionCardSheetGenerator letter={config.letter} />;
+  const docContent = () => {
+    const content = [];
+
+    // if pagePerPlayer is true generate a set of sheets per selected faction
+    if (config.pagePerPlayer) {
+      // loop over length of faction array
+      for (let i = 0; i < factions.length; i++) {
+        // if strategy card option was selected add that first
+        if (config.sc) {
+          content.push(strategyCardsSheet);
+        }
+        content.push(factionSheet);
+      }
+    } else {
+      if (config.sc) {
+        content.push(strategyCardsSheet);
+      }
+      content.push(factionSheet);
+    }
+    return content;
+  };
+
   const pdf = (
-    <Document>
-      <Page
-        size={config.letter === false ? 'a4' : 'letter'}
-        orientation={config.letter === false ? 'portrait' : 'portrait'}
-        style={styles.page}
-      >
-        {pageContent}
-      </Page>
-    </Document>
+    <>
+      <Document title="TI4 Cheatsheet">{docContent()}</Document>
+    </>
   );
 
   return (
-    <>
-      <div className="w-full">
-        <PDFViewer width="100%" height="1500px">
-          {pdf}
-        </PDFViewer>
-      </div>
-    </>
+    <PDFViewer height={`${height}px`} width="100%">
+      {pdf}
+    </PDFViewer>
   );
 }
 

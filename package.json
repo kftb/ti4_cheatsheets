@@ -1,6 +1,6 @@
 {
-  "name": "kftb-starter",
-  "version": "0.1.0",
+  "name": "ti4_cheatsheets",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
