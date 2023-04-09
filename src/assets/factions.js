@@ -70,6 +70,14 @@ export const factions = [
     pok: false,
   },
   {
+    factionName: 'Ω Naalu Collective	',
+    id: 'naalu_codex',
+    logo: '',
+    subtitle: 'Telepathic Manipulators',
+    pok: false,
+  },
+
+  {
     factionName: 'Nekro Virus	',
     id: 'nekro',
     logo: '',
@@ -105,12 +113,27 @@ export const factions = [
     pok: false,
   },
   {
+    factionName: 'Ω Xxcha Kingdom',
+    id: 'xxcha_codex',
+    logo: '',
+    subtitle: 'Heart of the Council',
+    pok: false,
+  },
+  {
     factionName: 'Yin Brotherhood',
     id: 'yin',
     logo: '',
     subtitle: 'Children of Moyin',
     pok: false,
   },
+  {
+    factionName: 'Ω Yin Brotherhood',
+    id: 'yin_codex',
+    logo: '',
+    subtitle: 'Children of Moyin',
+    pok: false,
+  },
+
   {
     factionName: 'Yssaril Tribes',
     id: 'yssaril',
