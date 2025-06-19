@@ -31,6 +31,11 @@ function Homepage() {
     control,
   });
 
+  const settingsWatch = useWatch({
+    name: 'settings',
+    control,
+  });
+
   // Counter to see how many factions have been chosen
   const factionCounter = Object.values(factionWatch).reduce(
     (a, item) => a + (item === true ? 1 : 0),
@@ -44,6 +49,7 @@ function Homepage() {
   // }
 
   const onSubmit = (data) => {
+    console.log(data);
     // Manual validation of more than 0, less than 8
     // TODO: Implement this through Yup validation
     if (factionCounter === 0 || factionCounter > 8) {
@@ -83,9 +89,20 @@ function Homepage() {
     }
   };
 
-  const newFactionCards = factions.map((f, i) => (
-    <FactionCard key={f.id} factionCounter={factionCounter} index={i} faction={f} />
-  ));
+  const filters = ['base'];
+  if (settingsWatch) {
+    Object.entries(settingsWatch).forEach(([key, value]) => {
+      if (value === true) {
+        filters.push(key);
+      }
+    });
+  }
+
+  const newFactionCards = factions
+    .filter((f, i) => filters.includes(f.expType))
+    .map((f, i) => (
+      <FactionCard key={f.id} factionCounter={factionCounter} index={i} faction={f} />
+    ));
 
   const counterWarning = () => {
     let remaining = 8 - factionCounter;

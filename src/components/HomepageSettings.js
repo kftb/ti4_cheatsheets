@@ -30,6 +30,11 @@ text-gray-400 bg-gray-800 border-gray-700 grayscale"
           {/* <SwitchOption id="tech" labelRight="Add Tech page" highlightSelection={true} />
           <SwitchOption id="objective" labelRight="Add Objectives page" highlightSelection={true} /> */}
         </SwitchOptionContainer>
+        <SwitchOptionContainer title="Expansions">
+          {/* <SwitchOption id="base" labelRight="Base game" highlightSelection={true} /> */}
+          <SwitchOption id="pok" labelRight="Prophecy of Kings" highlightSelection={true} />
+          <SwitchOption id="ds" labelRight="Discordant Stars" highlightSelection={true} />
+        </SwitchOptionContainer>
       </div>
     </>
   );
