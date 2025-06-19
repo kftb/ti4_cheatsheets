@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        title: ['Slider'],
+        slider: ['Slider', 'BlinkMacSystemFont', 'sans-serif'],
       },
     },
   },

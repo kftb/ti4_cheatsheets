@@ -20,7 +20,7 @@ function Homepage() {
   const addConfig = useConfigStore((state) => state.addConfig);
   const config = useConfigStore((state) => state.config);
   const methods = useForm({
-    defaultValues: { factions: '' },
+    defaultValues: { factions: '', settings: { ...config } },
     resolver: yupResolver(formValidationSchema),
   });
   const { control } = methods;
@@ -121,23 +121,15 @@ function Homepage() {
     <div className="flex justify-center">
       <div className="grid justify-items-center">
         <div className="grid flex-nowrap justify-center justify-items-center">
-          <h1 className="mt-10 text-4xl font-title uppercase ">TI4 Cheat sheet generator</h1>
+          <h1 className="mt-10 text-4xl font-slider title uppercase ">TI4 Cheat sheet generator</h1>
         </div>
         <h2 className="my-5">Pick the factions in your game</h2>
         <div className="mx-5 md:mx-10">
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               <HomepageSettings />
-              <span className="my-2 text-blue-600">
-                &nbsp;&nbsp;
-                {counterWarning()}
-              </span>
-
-              <ul className="grid gap-3 w-full md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                {newFactionCards}
-              </ul>
               <button
-                className="mt-6 py-2 px-4  bg-orange-800
+                className="my-6 py-2 px-4  bg-orange-800
                hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 
                text-white 
                w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5 
@@ -147,6 +139,14 @@ function Homepage() {
               >
                 Generate cheat sheet
               </button>
+              <span className="my-2 text-blue-600">
+                &nbsp;&nbsp;
+                {counterWarning()}
+              </span>
+
+              <ul className="grid gap-3 w-full md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                {newFactionCards}
+              </ul>
             </form>
           </FormProvider>
         </div>
