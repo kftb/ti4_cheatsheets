@@ -272,7 +272,7 @@ export const factions = [
     pok: true,
   },
   {
-    factionName: 'Keleres Council',
+    factionName: 'Council Keleres',
     id: 'keleres',
     logo: '',
     subtitle: 'Galactic Peacekeepers',
