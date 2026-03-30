@@ -8,6 +8,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Barony of Letnev	',
@@ -18,6 +19,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Clan of Saar',
@@ -28,6 +30,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Embers of Muaat',
@@ -38,6 +41,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Emirates of Hacan',
@@ -48,6 +52,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Federation of Sol',
@@ -58,6 +63,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Ghosts of Creuss',
@@ -68,6 +74,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'L1Z1X Mindnet',
@@ -78,6 +85,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Mentak Coalition',
@@ -88,6 +96,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Naalu Collective	',
@@ -98,6 +107,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Ω Naalu Collective	',
@@ -108,6 +118,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
 
   {
@@ -119,6 +130,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Sardakk N’orr',
@@ -129,6 +141,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Universities of Jol-Nar',
@@ -139,6 +152,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Winnu',
@@ -149,6 +163,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Xxcha Kingdom',
@@ -159,6 +174,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Ω Xxcha Kingdom',
@@ -169,6 +185,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Yin Brotherhood',
@@ -179,6 +196,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Ω Yin Brotherhood',
@@ -189,6 +207,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
 
   {
@@ -200,6 +219,7 @@ export const factions = [
     base: true,
     ds: false,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Argent Flight',
@@ -281,6 +301,46 @@ export const factions = [
     ds: false,
     pok: true,
   },
+  {
+    factionName: 'Crimson Rebellion',
+    id: 'crimsonrebellion',
+    subtitle: 'The Shattered Chain',
+    expType: 'te',
+    base: false,
+    ds: false,
+    pok: false,
+    te: true,
+  },
+  {
+    factionName: 'Deepwrought Scholarate',
+    id: 'deepwrought',
+    subtitle: 'Seekers of the Core',
+    expType: 'te',
+    base: false,
+    ds: false,
+    pok: false,
+    te: true,
+  },
+  {
+    factionName: 'Firmament / Obsidian',
+    id: 'firmament',
+    subtitle: 'The Dual Aspect',
+    expType: 'te',
+    base: false,
+    ds: false,
+    pok: false,
+    te: true,
+  },
+  {
+    factionName: 'Last Bastion',
+    id: 'lastbastion',
+    subtitle: 'The Shield of Ordinian',
+    expType: 'te',
+    base: false,
+    ds: false,
+    pok: false,
+    te: true,
+  },
 
   {
     factionName: 'Shipwrights of Axis',
@@ -290,6 +350,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Bentor Conglomerate',
@@ -299,6 +360,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Celdauri Trade Confederation',
@@ -308,6 +370,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Cheiran Hordes',
@@ -317,6 +380,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Savages of Cymiae',
@@ -326,6 +390,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Dih-Mohn Flotilla',
@@ -335,6 +400,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Edyn Mandate',
@@ -344,6 +410,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Florzen Profiteers',
@@ -353,6 +420,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Free Systems Compact',
@@ -362,6 +430,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Ghemina Raiders',
@@ -371,6 +440,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Ghoti Wayfarers',
@@ -380,6 +450,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'GLEdge Union',
@@ -389,6 +460,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Augurs of Ilyxum',
@@ -398,6 +470,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Berserkers of Kjalengard',
@@ -407,6 +480,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Kollecc Society',
@@ -416,6 +490,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Monks of Kolume',
@@ -425,6 +500,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Kortali Tribunal',
@@ -434,6 +510,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Kyro Sodality',
@@ -443,6 +520,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Lanefir Remnants',
@@ -452,6 +530,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Li-Zho Dynasty',
@@ -461,6 +540,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'L’tokk Khrask',
@@ -470,6 +550,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Mirveda Protectorate',
@@ -479,6 +560,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Glimmer of Mortheus',
@@ -488,6 +570,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Myko-Mentori',
@@ -497,6 +580,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Nivyn Star Kings',
@@ -506,6 +590,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Nokar Sellships',
@@ -515,6 +600,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Olradin League',
@@ -524,6 +610,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Zealots of Rhodun',
@@ -533,6 +620,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Roh’Dhna Mechatronics',
@@ -542,6 +630,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Tnelis Syndicate',
@@ -551,6 +640,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Vaden Banking Clans',
@@ -560,6 +650,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Vaylerian Scourge',
@@ -569,6 +660,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Veldyr Sovereignty',
@@ -578,6 +670,7 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
   {
     factionName: 'Zelian Purifier',
@@ -587,5 +680,6 @@ export const factions = [
     base: false,
     ds: true,
     pok: false,
+    te: false,
   },
 ];
