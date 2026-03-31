@@ -5,6 +5,16 @@ import { useConfigStore, useSetupStore } from '../context/SetupContext';
 import { getEveryNth } from '../libs/getEveryNth';
 import { useRouter } from 'next/router';
 import FactionCardSheetGenerator from './FactionCardSheetGenerator';
+import { factions as allFactions } from '../assets/factions';
+
+const factionById = Object.fromEntries(allFactions.map((f) => [f.id, f]));
+
+function getCardPath(id, isTeVersion) {
+  const expType = factionById[id]?.expType;
+  if (expType === 'te') return `/factions/cards/${id}_te.png`;
+  if (isTeVersion && (expType === 'base' || expType === 'pok')) return `/factions/cards/${id}_te.png`;
+  return `/factions/cards/${id}.png`;
+}
 
 function getLayout(numCards, oldStyles) {
   const styles = {};
@@ -27,6 +37,7 @@ function SheetGenerator() {
   const selectedFactions = useSetupStore((state) => state.factions);
   const config = useConfigStore((state) => state.config);
   const factions = selectedFactions.sort();
+  const isTeVersion = config.version === true;
   const router = useRouter();
 
   if (factions.length === 0) {
@@ -55,11 +66,11 @@ function SheetGenerator() {
     const factionsRight = getEveryNth(factions, 2, 1);
 
     const factionViewLeftImages = factionsLeft.map((fl) => (
-      <Image key={uniqueId()} style={styles.image} src={`/factions/cards/${fl}.png`} />
+      <Image key={uniqueId()} style={styles.image} src={getCardPath(fl, isTeVersion)} />
     ));
 
     const factionViewRightImages = factionsRight.map((fr) => (
-      <Image key={uniqueId()} style={styles.image} src={`/factions/cards/${fr}.png`} />
+      <Image key={uniqueId()} style={styles.image} src={getCardPath(fr, isTeVersion)} />
     ));
 
     pageContent = (
@@ -79,11 +90,11 @@ function SheetGenerator() {
     const factionsRight = getEveryNth(factions, 2, 1);
 
     const factionViewLeftImages = factionsLeft.map((fl) => (
-      <Image key={uniqueId()} style={styles.image} src={`/factions/cards/${fl}.png`} />
+      <Image key={uniqueId()} style={styles.image} src={getCardPath(fl, isTeVersion)} />
     ));
 
     const factionViewRightImages = factionsRight.map((fr) => (
-      <Image key={uniqueId()} style={styles.image} src={`/factions/cards/${fr}.png`} />
+      <Image key={uniqueId()} style={styles.image} src={getCardPath(fr, isTeVersion)} />
     ));
 
     pageContent = (

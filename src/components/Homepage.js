@@ -36,6 +36,25 @@ function Homepage() {
     control,
   });
 
+  const teWatch = useWatch({ name: 'settings.te', control });
+  const versionWatch = useWatch({ name: 'settings.version', control });
+
+  // Cross-field side effects: DS on → version resets to PoK; TE on → DS blocked; TE version on → DS blocked
+  useEffect(() => {
+    const subscription = methods.watch((data, { name }) => {
+      if (name === 'settings.ds' && data.settings?.ds) {
+        methods.setValue('settings.version', false);
+      }
+      if (name === 'settings.te' && data.settings?.te) {
+        methods.setValue('settings.ds', false);
+      }
+      if (name === 'settings.version' && data.settings?.version) {
+        methods.setValue('settings.ds', false);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [methods]);
+
   // Counter to see how many factions have been chosen
   const factionCounter = Object.values(factionWatch).reduce(
     (a, item) => a + (item === true ? 1 : 0),
@@ -127,7 +146,7 @@ function Homepage() {
         <div className="mx-5 md:mx-10">
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <HomepageSettings />
+              <HomepageSettings teActive={teWatch === true || versionWatch === true} />
               <button
                 className="my-6 py-2 px-4  bg-orange-800
                hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 

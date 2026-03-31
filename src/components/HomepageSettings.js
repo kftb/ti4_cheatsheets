@@ -1,7 +1,7 @@
 import React from 'react';
 import { SwitchOption } from './SwitchOption';
 
-function HomepageSettings() {
+function HomepageSettings({ teActive }) {
   const SwitchOptionContainer = ({ children, title }) => (
     <div
       className="flex items-center px-3 py-2  
@@ -33,7 +33,11 @@ text-gray-400 bg-gray-800 border-gray-700 grayscale"
         <SwitchOptionContainer title="Expansions">
           {/* <SwitchOption id="base" labelRight="Base game" highlightSelection={true} /> */}
           <SwitchOption id="pok" labelRight="Prophecy of Kings" highlightSelection={true} />
-          <SwitchOption id="ds" labelRight="Discordant Stars" highlightSelection={true} />
+          <SwitchOption id="te" labelRight="Thunder's Edge" highlightSelection={true} />
+          <SwitchOption id="ds" labelRight="Discordant Stars" highlightSelection={true} disabled={teActive} />
+        </SwitchOptionContainer>
+        <SwitchOptionContainer title="Reference version">
+          <SwitchOption id="version" labelLeft="Prophecy of Kings" labelRight="Thunder's Edge" />
         </SwitchOptionContainer>
       </div>
     </>
