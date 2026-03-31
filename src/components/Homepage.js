@@ -45,8 +45,9 @@ function Homepage() {
       if (name === 'settings.ds' && data.settings?.ds) {
         methods.setValue('settings.version', false);
       }
-      if (name === 'settings.te' && data.settings?.te) {
+      if (name === 'settings.te') {
         methods.setValue('settings.ds', false);
+        methods.setValue('settings.version', data.settings?.te ? true : false);
       }
       if (name === 'settings.version' && data.settings?.version) {
         methods.setValue('settings.ds', false);
@@ -117,8 +118,10 @@ function Homepage() {
     });
   }
 
+  const isTeActive = teWatch === true || versionWatch === true;
+
   const newFactionCards = factions
-    .filter((f, i) => filters.includes(f.expType))
+    .filter((f) => filters.includes(f.expType) && !(isTeActive && f.factionName.startsWith('Ω')))
     .map((f, i) => (
       <FactionCard key={f.id} factionCounter={factionCounter} index={i} faction={f} />
     ));

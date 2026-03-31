@@ -341,6 +341,16 @@ export const factions = [
     pok: false,
     te: true,
   },
+  {
+    factionName: 'Ral Nel Consortium',
+    id: 'ralnel',
+    subtitle: 'The Golden Web',
+    expType: 'te',
+    base: false,
+    ds: false,
+    pok: false,
+    te: true,
+  },
 
   {
     factionName: 'Shipwrights of Axis',
