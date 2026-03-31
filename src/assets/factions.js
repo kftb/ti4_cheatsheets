@@ -344,7 +344,7 @@ export const factions = [
   {
     factionName: 'Ral Nel Consortium',
     id: 'ralnel',
-    subtitle: 'The Golden Web',
+    subtitle: 'Objective Dealmakers',
     expType: 'te',
     base: false,
     ds: false,

@@ -40,6 +40,21 @@ function SheetGenerator() {
   const isTeVersion = config.version === true;
   const router = useRouter();
 
+  const hasMixedRatios = !isTeVersion && factions.some((id) => factionById[id]?.expType === 'te');
+  const NON_TE_ASPECT_RATIO = 1098 / 786;
+
+  const renderCardImage = (id, imageStyle) => {
+    const src = getCardPath(id, isTeVersion);
+    if (hasMixedRatios && src.endsWith('_te.png')) {
+      return (
+        <View key={uniqueId()} style={{ ...imageStyle, aspectRatio: NON_TE_ASPECT_RATIO }}>
+          <Image style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={src} />
+        </View>
+      );
+    }
+    return <Image key={uniqueId()} style={imageStyle} src={src} />;
+  };
+
   if (factions.length === 0) {
     router.push('/');
   }
@@ -65,13 +80,8 @@ function SheetGenerator() {
     const factionsLeft = getEveryNth(factions, 2, 0);
     const factionsRight = getEveryNth(factions, 2, 1);
 
-    const factionViewLeftImages = factionsLeft.map((fl) => (
-      <Image key={uniqueId()} style={styles.image} src={getCardPath(fl, isTeVersion)} />
-    ));
-
-    const factionViewRightImages = factionsRight.map((fr) => (
-      <Image key={uniqueId()} style={styles.image} src={getCardPath(fr, isTeVersion)} />
-    ));
+    const factionViewLeftImages = factionsLeft.map((fl) => renderCardImage(fl, styles.image));
+    const factionViewRightImages = factionsRight.map((fr) => renderCardImage(fr, styles.image));
 
     pageContent = (
       <>
@@ -89,13 +99,8 @@ function SheetGenerator() {
     const factionsLeft = getEveryNth(factions, 2, 0);
     const factionsRight = getEveryNth(factions, 2, 1);
 
-    const factionViewLeftImages = factionsLeft.map((fl) => (
-      <Image key={uniqueId()} style={styles.image} src={getCardPath(fl, isTeVersion)} />
-    ));
-
-    const factionViewRightImages = factionsRight.map((fr) => (
-      <Image key={uniqueId()} style={styles.image} src={getCardPath(fr, isTeVersion)} />
-    ));
+    const factionViewLeftImages = factionsLeft.map((fl) => renderCardImage(fl, styles.image));
+    const factionViewRightImages = factionsRight.map((fr) => renderCardImage(fr, styles.image));
 
     pageContent = (
       <>
@@ -120,7 +125,7 @@ function SheetGenerator() {
     </Page>
   );
 
-  const strategyCardsSheet = <FactionCardSheetGenerator letter={config.letter} />;
+  const strategyCardsSheet = <FactionCardSheetGenerator letter={config.letter} isTeVersion={isTeVersion} />;
   const docContent = () => {
     const content = [];
 

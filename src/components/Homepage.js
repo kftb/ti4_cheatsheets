@@ -17,10 +17,12 @@ const formValidationSchema = yup.object().shape({
 function Homepage() {
   const router = useRouter();
   const addFaction = useSetupStore((state) => state.addFaction);
+  const storedFactions = useSetupStore((state) => state.factions);
   const addConfig = useConfigStore((state) => state.addConfig);
   const config = useConfigStore((state) => state.config);
+  const defaultFactions = storedFactions.reduce((acc, id) => ({ ...acc, [id]: true }), {});
   const methods = useForm({
-    defaultValues: { factions: '', settings: { ...config } },
+    defaultValues: { factions: defaultFactions, settings: { ...config } },
     resolver: yupResolver(formValidationSchema),
   });
   const { control } = methods;

@@ -2,7 +2,7 @@ import { Document, Image, Page, PDFViewer, StyleSheet, View } from '@react-pdf/r
 import { uniqueId } from 'lodash';
 import { useConfigStore } from '../context/SetupContext';
 
-function FactionCardSheetGenerator({ letter }) {
+function FactionCardSheetGenerator({ letter, isTeVersion }) {
   // Create styles
   let styles = StyleSheet.create({
     page: {
@@ -17,7 +17,7 @@ function FactionCardSheetGenerator({ letter }) {
   });
 
   const strategyCardImage = (
-    <Image key={uniqueId()} style={styles.image} src={`/references/sc.jpg`} />
+    <Image key={uniqueId()} style={styles.image} src={isTeVersion ? `/references/sc_te.jpg` : `/references/sc.jpg`} />
   );
   const pageContent = (
     <>
