@@ -20,12 +20,28 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
   color: white;
+
+  @font-face {
+    font-family: 'Slider'; /* This is the name you'll use in CSS and Tailwind */
+    src: url('/fonts/SliderRegular.ttf') format('truetype');
+    font-weight: normal; /* Adjust if your font has different weights */
+    font-style: normal; /* Adjust if your font has different styles */
+    font-display: swap; /* Best practice for performance and user experience */
+  }
 }
-
-
 
 a {
   color: inherit;
