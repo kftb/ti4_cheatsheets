@@ -54,6 +54,14 @@ function Homepage() {
       if (name === 'settings.version' && data.settings?.version) {
         methods.setValue('settings.ds', false);
       }
+      // When an expansion is turned off, deselect its factions
+      ['pok', 'te', 'ds'].forEach((exp) => {
+        if (name === `settings.${exp}` && !data.settings?.[exp]) {
+          factions
+            .filter((f) => f.expType === exp)
+            .forEach((f) => methods.setValue(`factions.${f.id}`, false));
+        }
+      });
     });
     return () => subscription.unsubscribe();
   }, [methods]);
