@@ -24,7 +24,7 @@ body {
 
   @font-face {
   font-family: 'Slider'; /* This is the name you'll use in CSS and Tailwind */
-  src: url('../assets/SliderRegular.ttf') format('truetype'); /* Path to your font file and format */
+  src: url('/fonts/SliderRegular.ttf') format('truetype');
   font-weight: normal; /* Adjust if your font has different weights */
   font-style: normal; /* Adjust if your font has different styles */
   font-display: swap; /* Best practice for performance and user experience */
