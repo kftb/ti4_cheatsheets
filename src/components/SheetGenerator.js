@@ -47,8 +47,8 @@ function SheetGenerator() {
     const src = getCardPath(id, isTeVersion);
     if (hasMixedRatios && src.endsWith('_te.png')) {
       return (
-        <View key={uniqueId()} style={{ ...imageStyle, aspectRatio: NON_TE_ASPECT_RATIO }}>
-          <Image style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={src} />
+        <View key={uniqueId()} style={{ ...imageStyle, aspectRatio: NON_TE_ASPECT_RATIO, justifyContent: 'center', alignItems: 'center' }}>
+          <Image style={{ width: '100%' }} src={src} />
         </View>
       );
     }
