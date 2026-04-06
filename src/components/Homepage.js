@@ -38,8 +38,8 @@ function Homepage() {
     control,
   });
 
-  const teWatch = useWatch({ name: 'settings.te', control });
-  const versionWatch = useWatch({ name: 'settings.version', control });
+  const teWatch = settingsWatch?.te;
+  const versionWatch = settingsWatch?.version;
 
   // Cross-field side effects: DS on → version resets to PoK; TE on → DS blocked; TE version on → DS blocked
   useEffect(() => {
@@ -159,7 +159,7 @@ function Homepage() {
         <div className="mx-5 md:mx-10">
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <HomepageSettings teActive={teWatch === true || versionWatch === true} />
+              <HomepageSettings teActive={versionWatch === true} />
               <button
                 className="my-6 py-2 px-4  bg-orange-800
                hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 
